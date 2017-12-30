@@ -71,15 +71,18 @@ public class IdlingResourceMenuActivityTest {
 
     }
 
-    // TODO (7) Test that the gridView with Tea objects appears and we can click a gridView item
+
     @Test
     public void idlingResourceTest() {
 
+        onData(anything()).inAdapterView(withId(R.id.tea_grid_view)).atPosition(0).perform(click());
     }
 
-    // TODO (8) Unregister resources when not needed to avoid malfunction
+
     @After
     public void unregisterIdlingResource() {
-
+        if (mIdlingResource != null) {
+            Espresso.unregisterIdlingResources(mIdlingResource);
+        }
     }
 }
