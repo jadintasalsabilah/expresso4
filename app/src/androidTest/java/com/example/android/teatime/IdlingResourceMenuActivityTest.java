@@ -62,10 +62,12 @@ public class IdlingResourceMenuActivityTest {
     private IdlingResource mIdlingResource;
 
 
-    // TODO (6) Registers any resource that needs to be synchronized with Espresso before
-    // the test is run.
     @Before
     public void registerIdlingResource() {
+
+        mIdlingResource = mActivityTestRule.getActivity().getIdlingResource();
+        // To prove that the test fails, omit this call:
+        Espresso.registerIdlingResources(mIdlingResource);
 
     }
 
